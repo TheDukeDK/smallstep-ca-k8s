@@ -116,12 +116,20 @@ spec:
   ingressClassName: nginx
 ```
 
-## Notes
+## Notes and Next Steps
 
 * You could replace the *generated* root and intermediate certificates with 
 your own. 
 
 * You can easily generate a values file for `step-ca` by using the `step-cli`.
-> [Install step CLI](https://smallstep.com/docs/step-cli/installation) and run 
-> `step ca init --helm > values.yaml`.
+  > [Install step CLI](https://smallstep.com/docs/step-cli/installation) and run 
+  > `step ca init --helm > values.yaml`.
+
+* Try out the [step-issuer](https://github.com/smallstep/step-issuer).
+  It should be more flexible in terms of what SANs can be in the certificate. With 
+  the ACME issuer you'll only be able to get DNS and IP addresses, as these are supported 
+  in the ACME protocol and in step-ca. The step-issuer can be configured to request certs 
+  using a provisioner that also allows URLs or custom strings in the CN. 
+  I don't know if that makes sense in K8s, though. There may also be cases in which the services 
+  that need a cert can't perform the challenge, so then the ACME issuer won't work.
 
