@@ -9,6 +9,10 @@ with Ingress to get automated certificate generation and renewal.
 You, **OBVIOUSLY**, would not use this demo repo as is. The certs and passwords 
 are plain text and are the ones generated when I created this.
 
+Also there is a some hardcoded things like the host in the ingress, CA url, etc.
+
+Again it is a **personal** demo for understanding.
+
 # The Pieces
 
 * Step Certificates(`step-certificates`): Smallsteps Certificate Authority(CA) running in 
