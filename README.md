@@ -52,10 +52,10 @@ kubectl apply -f cert-manager/cert-manager.yaml
 
 3. Configure cert-manager
 
-Smallsteps CA `step-ca` is available over TLS so you need to **patch** `cert-manager` 
+Smallsteps CA `step-certificates` is available over TLS so you need to **patch** `cert-manager` 
 with the CA's root cert. Basically apply the ConfigMap for the cert and a patch for 
 cert-manager. Finally apply an ACME [Issuer](https://cert-manager.io/docs/configuration/acme/#configuration) 
-which will use the `step-ca` as the authority.
+which will use the `step-certificate` as the authority.
 
 ```console
 kubectl apply -f cert-manager/internal-ca.yaml
