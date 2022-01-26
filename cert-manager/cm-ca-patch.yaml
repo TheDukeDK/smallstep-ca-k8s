@@ -1,0 +1,21 @@
+spec:
+  template:
+    spec:
+      containers:
+      - args:
+        - --v=2
+        - --cluster-resource-namespace=$(POD_NAMESPACE)
+        - --leader-election-namespace=kube-system
+        name: cert-manager
+        volumeMounts:
+        - name: ca-pemstore
+          mountPath: /etc/ssl/certs/internal-ca.pem
+          subPath: internal-ca.pem
+          readOnly: false
+        resources: {}
+      volumes:
+        - name: ca-pemstore
+          configMap:
+            # Provide the name of the ConfigMap containing the files you want
+            # to add to the container
+            name: ca-pemstore

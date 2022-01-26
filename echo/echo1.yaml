@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo1
+  labels:
+    app: echo1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echo1
+  template:
+    metadata:
+      labels:
+        app: echo1
+    spec:
+      containers:
+      - name: echo1
+        image: k8s.gcr.io/echoserver:1.4
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo1
+spec:
+  ports:
+  - port: 8080
+  selector:
+    app: echo1
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: echo1-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "acme-issuer"
+spec:
+  tls:
+  - hosts:
+    - echo1.tdh.eficode.academy
+    secretName: echo1-tls
+  rules:
+  - host: echo1.tdh.eficode.academy
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: echo1
+            port:
+              number: 8080
+  ingressClassName: nginx

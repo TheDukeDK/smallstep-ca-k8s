@@ -1,0 +1,23 @@
+apiVersion: v1
+data:
+  internal-ca.pem: |
+    -----BEGIN CERTIFICATE-----
+    MIIB6zCCAZGgAwIBAgIQJXK6z2D8L19GQg8T10cH/DAKBggqhkjOPQQDAjBUMSQw
+    IgYDVQQKExtzdGVwLWNhLnRkaC5lZmljb2RlLmFjYWRlbXkxLDAqBgNVBAMTI3N0
+    ZXAtY2EudGRoLmVmaWNvZGUuYWNhZGVteSBSb290IENBMB4XDTIyMDEyNDEyMjUw
+    NloXDTMyMDEyMjEyMjUwNlowVDEkMCIGA1UEChMbc3RlcC1jYS50ZGguZWZpY29k
+    ZS5hY2FkZW15MSwwKgYDVQQDEyNzdGVwLWNhLnRkaC5lZmljb2RlLmFjYWRlbXkg
+    Um9vdCBDQTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABPUj8vazJ/IPeILU9ocn
+    ba92MMPqjCnft8n47UlIcVfT7wPXDisudxVz+wifiDDBD1zKjDcieZEJS1dk329R
+    G8ejRTBDMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMB0GA1Ud
+    DgQWBBTQxtAftsVaVB7sSZPi1oqaOUnFTTAKBggqhkjOPQQDAgNIADBFAiEAsADH
+    y6331vm5zYq2GLl8WDFIJCsB1Bnl7slrnO4Wd1UCIAM7I5wJXUpoWVd/tx0wIyej
+    rc5RA5AQwBNaw7xFQNu5
+    -----END CERTIFICATE-----
+kind: ConfigMap
+metadata:
+  name: ca-pemstore
+  namespace: cert-manager
+  resourceVersion: "9978"
+  selfLink: /api/v1/namespaces/cert-manager/configmaps/ca-pemstore
+---
