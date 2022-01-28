@@ -19,7 +19,7 @@ Again it is a **personal** demo for understanding.
 the cluster. It has an ACME provisioner configured in the values.yaml file.
 
 * Cert Manager(`cert-manager`): A certificate manager running in the cluster to manage 
-certificate requests which will be stored as K8s secrets. We configure a cluster 
+certificate requests which will be stored as K8s secrets. Then configure a cluster 
 wide ACME issuer(`acme-issuer`) which points to the step-ca's ACME provisioner.
 
 * Nginx Ingress Controller(`ingress-nginx-controller`): A controller for ingress's 
@@ -60,7 +60,6 @@ which will use the `step-certificate` as the authority.
 ```console
 kubectl apply -f cert-manager/internal-ca.yaml
 kubectl patch deployment cert-manager -n cert-manager --patch "$(cat cert-manager/cm-ca-patch.yaml)"
-kubectl apply -f cert-manager/acme-issuer.yaml
 ```
 
 Wait for the cert-manager to be restarted then apply the ACME issuer.
